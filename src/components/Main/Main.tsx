@@ -96,21 +96,22 @@ function Main() {
                 <section>
                     <table>
                         <thead className="headTable">
-                            <TableHeads sortUsers={sortUsers}/>
+                            <TableHeads loading={loading} sortUsers={sortUsers}/>
                         </thead>
                         <tbody>
-                            {users.length > 0
-                                ? <Users users={users} getUserInfo={getUserInfo} deleteUser={deleteUser}/>
-                                :
-                                <tr className="tr-nodata">
-                                    <td colSpan={6}>
-                                        {loading
-                                            ? <div className="spinner-wrapper"><Spinner/></div>
-                                            : "Данные отсутствуют"
-                                        }
-                                    </td>
-                                </tr>
-                            }
+                        {loading &&
+                            <tr className="tr-nodata">
+                                <td colSpan={6}>
+                                    <div className="spinner-wrapper"><Spinner/></div>
+                                </td>
+                            </tr>
+                        }
+                        {!loading && users.length > 0 && <Users users={users} getUserInfo={getUserInfo} deleteUser={deleteUser}/>}
+                        {!loading && !users.length &&
+                            <tr className="tr-nodata">
+                                <td colSpan={6}>Данные отсутствуют</td>
+                            </tr>
+                        }
                         </tbody>
                     </table>
                 </section>

@@ -1,4 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+
+type TableHeadsPropsType = {
+    sortUsers: (sd: string, f: string) => void,
+    loading: boolean
+}
 
 type TableHeadsType = {
     id: string,
@@ -6,7 +11,7 @@ type TableHeadsType = {
     text: string
 }
 
-function TableHeads(props: {sortUsers: (sd: string, f: string) => void}){
+function TableHeads(props: TableHeadsPropsType){
     const [tableHeads, setTableHeads] = useState<TableHeadsType[]>([
         {
             id: "id",
@@ -40,6 +45,22 @@ function TableHeads(props: {sortUsers: (sd: string, f: string) => void}){
         },
 
     ]);
+    useEffect(() => {
+        if(!props.loading)
+            setTableHeads([...tableHeads.map(item => {
+                if(item.id === "id"){
+                    return {
+                        ...item,
+                        sort: "asc" as TableHeadsType["sort"]
+                    }
+                }else{
+                    return {
+                        ...item,
+                        sort: "none" as TableHeadsType["sort"]
+                    }
+                }
+            })])
+    }, [props.loading]);
 
     function sort(field: string): void{
         if(field === "contacts" || field === "actions") return;
