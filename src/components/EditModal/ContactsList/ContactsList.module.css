@@ -1,0 +1,86 @@
+.wrapper{
+    padding: 0 30px;
+    margin: 0 -30px 25px -30px;
+    background-color: #33333310;
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.list_notEmpty{
+    padding: 25px 0;
+}
+
+.item{
+    display: flex;
+}
+
+.select{
+    background-color: #C8C5D140;
+    border: 1px solid #C8C5D1;
+
+    &:focus{
+        outline: none;
+    }
+}
+
+.input{
+    flex: 1;
+    padding: 8px 12px;
+    border: 0;
+    border-top: 1px solid #C8C5D1;
+    border-bottom: 1px solid #C8C5D1;
+    &:focus{
+        outline: none;
+    }
+}
+
+.delBtn{
+    background-color: #C8C5D140;
+    border: 1px solid #C8C5D1;
+    cursor: pointer;
+    transition: border-color .3s ease-in-out;
+
+    &:hover svg path{
+        fill: #F06A4D;
+    }
+    &:hover{
+        border-color: #F06A4D;
+    }
+}
+.delBtn path{
+    transition: fill .3s ease-in-out;
+}
+
+.addBtn{
+    gap: 5px;
+    margin: 0 auto;
+    padding: 8px 0;
+    cursor: pointer;
+    transition: color .3s ease-in-out;
+}
+
+.addBtn path{
+    transition: fill .3s ease-in-out;
+}
+
+.addBtn:hover {
+    color: #9873FF
+}
+
+.addBtn:hover>svg>path:nth-child(1) {
+    fill: #fff;
+}
+
+.addBtn:hover>svg>path:nth-child(2) {
+    fill: #9873FF;
+}
+
+
+.invalidError{
+    color: #F06A4D;
+    font-size: 12px;
+}
