@@ -1,0 +1,28 @@
+.table-row{
+
+}
+
+.table-cell{
+    padding: 10px;
+}
+
+.table-cell-btns{
+    display: flex;
+}
+
+.id{
+    color: var(--txt-grey);
+}
+
+.btnEdit, .btnDel{
+    cursor: pointer;
+    transition: color .3s ease-in-out;
+}
+
+.btnEdit:hover{
+    color: #9873FF;
+}
+
+.btnDel:hover{
+    color: #F06A4D;
+}
