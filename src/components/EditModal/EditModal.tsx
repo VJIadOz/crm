@@ -5,6 +5,7 @@ import ContactsList from "./ContactsList/ContactsList";
 import {addUserAPI, deleteUserAPI, editUserAPI} from "../../api/usersApi";
 import {useState} from "react";
 import Spinner from "../../assets/images/Spinner";
+import {toast} from "react-toastify";
 
 type PropsModal = {
     setVisibleModal: (value: boolean) => void,
@@ -36,33 +37,42 @@ function EditModal({operationModal, infoUser, setVisibleModal, showNewUsersList,
         setLoading(true);
         if(operationModal === "new") {
             addUserAPI(getValues())
-                .then(() => {
+                .then((response) => {
+                    if(response.data) {
+                        toast.success("Пользователь успешно добавлен",{
+                            position: "top-right",
+                            autoClose: 5000,
+                        });
+                        updateList();
+                    }
                     setLoading(false);
-                    updateList();
                 })
-                .catch(()=>
-                    setLoading(false)
-                )
         }
         if(operationModal === "delete") {
             deleteUserAPI(infoUser.id as string)
-                .then(() => {
+                .then((response) => {
+                    if(response.data) {
+                        toast.success("Пользователь успешно удален",{
+                            position: "top-right",
+                            autoClose: 5000,
+                        });
+                        updateList();
+                    }
                     setLoading(false);
-                    updateList()
                 })
-                .catch(()=>
-                    setLoading(false)
-                )
         }
         if(operationModal === "edit") {
             editUserAPI(infoUser.id as string, getValues())
-                .then(() => {
+                .then((response) => {
+                    if(response.data) {
+                        toast.success("Пользователь успешно изменён",{
+                            position: "top-right",
+                            autoClose: 5000,
+                        });
+                        updateList();
+                    }
                     setLoading(false);
-                    updateList()
                 })
-                .catch(()=>
-                    setLoading(false)
-                )
         }
     }
 

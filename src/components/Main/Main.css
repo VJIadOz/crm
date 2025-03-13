@@ -16,7 +16,11 @@
 }
 
 .tr-nodata{
+    text-align: center;
+}
 
+.tr-nodata td{
+    line-height: 2;
 }
 
 .spinner-wrapper{

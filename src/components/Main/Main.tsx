@@ -24,24 +24,25 @@ function Main(props: {triggerSearch: string}) {
 
 
     function getUsersList(param: string = ""):void{
-        getUsers(param).then(response => {
-            setUsers(response.data);
-            setUnsortedUsers(response.data);
-            setLoading(false);
-        })
+        setLoading(true);
+        getUsers(param)
+            .then(response => {
+                if(!response.data){
+                    setLoading(false);
+                }else{
+                    setUsers(response.data);
+                    setUnsortedUsers(response.data);
+                    setLoading(false);
+                }
+
+            })
     }
 
     useEffect(() => {
-        getUsersList()
-    }, [])
-
-    useEffect(() => {
-        setLoading(true);
         getUsersList(props.triggerSearch)
     }, [props.triggerSearch])
 
     function showNewUsersList():void{
-        setLoading(true);
         getUsersList()
     }
 

@@ -1,7 +1,7 @@
 import Contacts from "../Contacts/Contacts";
 import {User} from "../../types/user.type";
 import "./Users.css"
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import Spinner from "../../../../assets/images/Spinner";
 
 type PropsUser = {
@@ -12,11 +12,6 @@ type PropsUser = {
 
 function Users({users, getUserInfo, deleteUser}:PropsUser){
     const [loadingUserInfo, setLoadingUserInfo] = useState<{loading: boolean, id: string}>({loading: false, id: ""});
-    useEffect(()=>{
-        if(loadingUserInfo){
-
-        }
-    },[loadingUserInfo])
 
     function addZero(data:number):string{
         return data < 10 ? `0${data}` : `${data}`
