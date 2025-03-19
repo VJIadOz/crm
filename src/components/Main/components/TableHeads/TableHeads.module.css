@@ -1,0 +1,14 @@
+.headColumn {
+    padding: 0 10px 8px 10px;
+    text-align: left;
+}
+
+.headColumn span{
+    font-size: 12px;
+    color: var(--txt-grey);
+    cursor: pointer;
+}
+
+.headColumnNosort span{
+    cursor: unset;
+}

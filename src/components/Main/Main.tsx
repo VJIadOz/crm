@@ -1,4 +1,4 @@
-import './Main.css'
+import MainStyles from './Main.module.css';
 import addUserIcon from '../../assets/images/addUser.svg'
 import React, {useEffect, useState} from "react";
 import {User} from "./types/user.type";
@@ -96,40 +96,43 @@ function Main(props: {triggerSearch: string}) {
     }
 
     return (
-        <main className="main">
-            <div className="wrapper">
-                <h2 className="title">Клиенты</h2>
-                <section>
-                    <table>
-                        <thead className="headTable">
+        <main>
+            <section className={MainStyles.mainSection}>
+                <div className={MainStyles.titleWrapper}>
+                    <h2 className={MainStyles.title}>Клиенты</h2>
+                </div>
+                <div className={MainStyles.tableWrapper}>
+                    <table className={MainStyles.table}>
+                        <thead>
                             <TableHeads loading={loading} sortUsers={sortUsers}/>
                         </thead>
-                        <tbody>
-                        {loading &&
-                            <tr className="tr-nodata">
-                                <td colSpan={6}>
-                                    <div className="spinner-wrapper"><Spinner/></div>
-                                </td>
-                            </tr>
-                        }
-                        {!loading && users.length > 0 && <Users users={users} getUserInfo={getUserInfo} deleteUser={deleteUser}/>}
-                        {!loading && !users.length &&
-                            <tr className="tr-nodata">
-                                <td colSpan={6}>Данные отсутствуют</td>
-                            </tr>
-                        }
+                        <tbody className={MainStyles.tbody}>
+                            {loading &&
+                                <tr className={MainStyles.trNodata}>
+                                    <td colSpan={6}>
+                                        <div className={MainStyles.spinnerWrapper}><Spinner/></div>
+                                    </td>
+                                </tr>
+                            }
+                            {!loading && users.length > 0 && <Users users={users} getUserInfo={getUserInfo} deleteUser={deleteUser}/>}
+                            {!loading && !users.length &&
+                                <tr className={MainStyles.trNodata}>
+                                    <td colSpan={6}>Данные отсутствуют</td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
-                </section>
-                <div className="addBtn-wrapper">
-                    <button className="btn-reset btn-addUser" onClick={()=> {
-                        setOperationModal("new");
-                        setInfoUser(emptyUser)
-                        setVisibleModal(true);
-                    }}><img src={addUserIcon} alt="добавить клиента"/>Добавить клиента</button>
                 </div>
-                { visibleModal && <EditModal operationModal={operationModal} infoUser={infoUser} setVisibleModal={setVisibleModal} showNewUsersList={showNewUsersList} deleteUser={deleteUser}/>}
-            </div>
+
+            </section>
+            <section className={MainStyles.addBtnWrapper}>
+                <button className={`btn-reset ${MainStyles.btnAddUser}`} onClick={()=> {
+                    setOperationModal("new");
+                    setInfoUser(emptyUser)
+                    setVisibleModal(true);
+                }}><img src={addUserIcon} alt="добавить клиента"/>Добавить клиента</button>
+            </section>
+            { visibleModal && <EditModal operationModal={operationModal} infoUser={infoUser} setVisibleModal={setVisibleModal} showNewUsersList={showNewUsersList} deleteUser={deleteUser}/>}
 
         </main>
 

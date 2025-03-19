@@ -1,6 +1,6 @@
 import Contacts from "../Contacts/Contacts";
 import {User} from "../../types/user.type";
-import "./Users.css"
+import UsersStyles from "./Users.module.css";
 import {useState} from "react";
 import Spinner from "../../../../assets/images/Spinner";
 
@@ -40,15 +40,15 @@ function Users({users, getUserInfo, deleteUser}:PropsUser){
         <>
             {users.map(user =>{
                 return (
-                    <tr key={user.id} className="table-row">
-                        <td className="table-cell id">{user.id}</td>
-                        <td className="table-cell">{user.surname} {user.name} {user.lastName}</td>
-                        <td className="table-cell">{formatDate(user.createdAt as Date)} <span>{formatTime(user.createdAt as Date)}</span></td>
-                        <td className="table-cell">{formatDate(user.updatedAt as Date)} <span>{formatTime(user.updatedAt as Date)}</span></td>
-                        <td className="table-cell"><Contacts data={user.contacts}/></td>
+                    <tr key={user.id}>
+                        <td className={`${UsersStyles.tableCell} ${UsersStyles.id}`}>{user.id}</td>
+                        <td className={UsersStyles.tableCell}>{user.surname} {user.name} {user.lastName}</td>
+                        <td className={UsersStyles.tableCell}>{formatDate(user.createdAt as Date)} <span>{formatTime(user.createdAt as Date)}</span></td>
+                        <td className={UsersStyles.tableCell}>{formatDate(user.updatedAt as Date)} <span>{formatTime(user.updatedAt as Date)}</span></td>
+                        <td className={UsersStyles.tableCell}><Contacts data={user.contacts}/></td>
                         <td>
-                            <div className="table-cell-btns">
-                                <button className="btn-reset btnEdit" onClick={()=>getInfoUser(user.id as string)}>
+                            <div className={UsersStyles.tableCellBtns}>
+                                <button className={`btn-reset ${UsersStyles.btnEdit}`} onClick={()=>getInfoUser(user.id as string)}>
                                     {(!loadingUserInfo.loading || user.id !== loadingUserInfo.id) &&
                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <g opacity="0.7" clipPath="url(#clip0_224_1347)">
@@ -61,11 +61,11 @@ function Users({users, getUserInfo, deleteUser}:PropsUser){
                                             </defs>
                                         </svg>
                                     }
-                                    {loadingUserInfo.loading && user.id == loadingUserInfo.id  && <span><Spinner/></span>}
+                                    {loadingUserInfo.loading && user.id === loadingUserInfo.id  && <span><Spinner/></span>}
 
                                     Изменить
                                 </button>
-                                <button className="btn-reset btnDel" onClick={()=>delUser(user.id as string)}>
+                                <button className={`btn-reset ${UsersStyles.btnDel}`} onClick={()=>delUser(user.id as string)}>
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g opacity="0.7" clipPath="url(#clip0_224_1352)">
                                             <path d="M8 2C4.682 2 2 4.682 2 8C2 11.318 4.682 14 8 14C11.318 14 14 11.318 14 8C14 4.682 11.318 2 8 2ZM8 12.8C5.354 12.8 3.2 10.646 3.2 8C3.2 5.354 5.354 3.2 8 3.2C10.646 3.2 12.8 5.354 12.8 8C12.8 10.646 10.646 12.8 8 12.8ZM10.154 5L8 7.154L5.846 5L5 5.846L7.154 8L5 10.154L5.846 11L8 8.846L10.154 11L11 10.154L8.846 8L11 5.846L10.154 5Z" fill="#F06A4D"/>

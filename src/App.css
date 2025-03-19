@@ -8,7 +8,16 @@
 }
 
 :root{
+    --main-color-1: #fff;
+    --main-color-2: #000;
     --txt-grey: #B0B0B0;
+    --decor-color-1: #9873FF;
+    --decor-color-1-transparent: #9873FF40;
+    --decor-color-2: 51,51,51;
+    --main-bg-color: #F5F5F5;
+    --border-color-1: #C8C5D1;
+    --border-color-1-transparent: #C8C5D140;
+    --red-color: #F06A4D;
 }
 
 body {
@@ -31,7 +40,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background-color: #F5F5F5;
+    background-color: var(--main-bg-color);
 }
 
 .spinner{
@@ -47,5 +56,12 @@ body {
     100%{
         transform: rotate(360deg);
     }
+}
+
+.example {
+    display: flex;
+    transition: all 0.5s;
+    user-select: none;
+    background: linear-gradient(to bottom, white, black);
 }
 

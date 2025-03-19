@@ -1,7 +1,7 @@
 .wrapper{
     padding: 0 30px;
     margin: 0 -30px 25px -30px;
-    background-color: #33333310;
+    background-color: rgba(var(--decor-color-2), 0.07);
 }
 
 .list{
@@ -19,8 +19,8 @@
 }
 
 .select{
-    background-color: #C8C5D140;
-    border: 1px solid #C8C5D1;
+    background-color: var(--border-color-1-transparent);
+    border: 1px solid var(--border-color-1);
 
     &:focus{
         outline: none;
@@ -31,24 +31,24 @@
     flex: 1;
     padding: 8px 12px;
     border: 0;
-    border-top: 1px solid #C8C5D1;
-    border-bottom: 1px solid #C8C5D1;
+    border-top: 1px solid var(--border-color-1);
+    border-bottom: 1px solid var(--border-color-1);
     &:focus{
         outline: none;
     }
 }
 
 .delBtn{
-    background-color: #C8C5D140;
-    border: 1px solid #C8C5D1;
+    background-color: var(--border-color-1-transparent);
+    border: 1px solid var(--border-color-1);
     cursor: pointer;
     transition: border-color .3s ease-in-out;
 
     &:hover svg path{
-        fill: #F06A4D;
+        fill: var(--red-color);
     }
     &:hover{
-        border-color: #F06A4D;
+        border-color: var(--red-color);
     }
 }
 .delBtn path{
@@ -68,19 +68,26 @@
 }
 
 .addBtn:hover {
-    color: #9873FF
+    color: var(--decor-color-1);
 }
 
 .addBtn:hover>svg>path:nth-child(1) {
-    fill: #fff;
+    fill: var(--main-color-1);
 }
 
 .addBtn:hover>svg>path:nth-child(2) {
-    fill: #9873FF;
+    fill: var(--decor-color-1);
 }
 
 
 .invalidError{
-    color: #F06A4D;
+    color: var(--red-color);
     font-size: 12px;
+}
+
+@media (max-width: 576px){
+    .wrapper{
+        padding: 0 20px;
+        margin: 0 -20px 25px -20px;
+    }
 }

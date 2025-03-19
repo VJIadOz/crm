@@ -1,4 +1,4 @@
-.contacts-wrapper{
+.contactsWrapper{
     display: flex;
     gap: 7px;
     flex-wrap: wrap;
@@ -12,25 +12,25 @@
     line-height: 0;
 }
 
-.icon:hover .icon-details{
+.icon:hover .iconDetails{
     display: block;
 }
 
-.icon-details{
+.iconDetails{
     position: absolute;
     bottom: 150%;
     display: none;
     padding: 10px 14px;
     font-size: 14px;
     font-weight: 700;
-    background-color: #000;
-    color: #fff;
+    background-color: var(--main-color-2);
+    color: var(--main-color-1);
     z-index: 5;
     white-space: nowrap;
     transition: display .3s ease-in-out;
 }
 
-.icon-details::after {
+.iconDetails::after {
     position: absolute;
     content: '';
     bottom: -45%;
@@ -39,5 +39,5 @@
     width: 10px;
     height: 10px;
     transform: rotateZ(45deg) translate(-60%);
-    background-color: #000;
+    background-color: var(--main-color-2);
 }

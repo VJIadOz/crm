@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import TableHeadsStyles from "./TableHeads.module.css";
 
 type TableHeadsPropsType = {
     sortUsers: (sd: string, f: string) => void,
@@ -47,27 +48,15 @@ function TableHeads(props: TableHeadsPropsType){
     ]);
     useEffect(() => {
         if(!props.loading)
-            setTableHeads([...tableHeads.map(item => {
-                if(item.id === "id"){
-                    return {
-                        ...item,
-                        sort: "asc" as TableHeadsType["sort"]
-                    }
-                }else{
-                    return {
-                        ...item,
-                        sort: "none" as TableHeadsType["sort"]
-                    }
-                }
-            })])
+            sort("id");
     }, [props.loading]);
 
     function sort(field: string): void{
         if(field === "contacts" || field === "actions") return;
         let sortDirection: TableHeadsType["sort"] = "none";
         setTableHeads([...tableHeads.map(item => {
-            if(item.id === field){
-                switch (item.sort){
+            if(item.id === field) {
+                switch (item.sort) {
                     case "asc":
                         sortDirection = "desc";
                         break;
@@ -84,12 +73,18 @@ function TableHeads(props: TableHeadsPropsType){
                     ...item,
                     sort: sortDirection as TableHeadsType["sort"]
                 }
+            }else if(item.id === "contacts" || item.id === "actions"){
+                return {
+                    ...item,
+                    sort: "disable" as TableHeadsType["sort"]
+                }
             }else{
                 return {
                     ...item,
                     sort: "none" as TableHeadsType["sort"]
                 }
             }
+
         })])
         props.sortUsers(sortDirection, field)
     }
@@ -97,7 +92,7 @@ function TableHeads(props: TableHeadsPropsType){
     return(
         <tr>
             {tableHeads.map(head =>
-                <th key={head.id} className={`head-column ${head.sort === "disable" && 'head-column-nosort'}`}>
+                <th key={head.id} className={`${TableHeadsStyles.headColumn} ${head.sort === "disable" ? TableHeadsStyles.headColumnNosort : ''}`}>
                     <span onClick={()=>sort(head.id)}>
                         {head.text}
                         {head.sort === "asc" &&

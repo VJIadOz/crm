@@ -109,7 +109,7 @@ function EditModal({operationModal, infoUser, setVisibleModal, showNewUsersList,
                                        {...register("surname", {required: true, pattern: /^[А-яA-z-]+$/})}
                                        placeholder=" "
                                 />
-                                <label htmlFor="inputName">Фамилия<span style={{'color': '#9873FF'}}>*</span></label>
+                                <label htmlFor="inputName">Фамилия<span style={{'color': 'var(--decor-color-1)'}}>*</span></label>
                                 {errors.surname && errors.surname.type === "required" &&
                                     <span className={modalStyles.invalidError}>Это поле не должно быть пустым</span>}
                                 {errors.surname && errors.surname.type === "pattern" &&
@@ -120,7 +120,7 @@ function EditModal({operationModal, infoUser, setVisibleModal, showNewUsersList,
                                        className={`${modalStyles.input} ${errors.name && modalStyles.inputInvalid}`}
                                        {...register("name", {required: true, pattern: /^[А-яA-z-]+$/})}
                                        placeholder=" "/>
-                                <label htmlFor="inputSurname">Имя<span style={{'color': '#9873FF'}}>*</span></label>
+                                <label htmlFor="inputSurname">Имя<span style={{'color': 'var(--decor-color-1)'}}>*</span></label>
                                 {errors.name && errors.name.type === "required" &&
                                     <span className={modalStyles.invalidError}>Это поле не должно быть пустым</span>}
                                 {errors.name && errors.name.type === "pattern" &&

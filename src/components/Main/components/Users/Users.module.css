@@ -1,12 +1,8 @@
-.table-row{
-
-}
-
-.table-cell{
+.tableCell{
     padding: 10px;
 }
 
-.table-cell-btns{
+.tableCellBtns{
     display: flex;
 }
 
@@ -20,9 +16,9 @@
 }
 
 .btnEdit:hover{
-    color: #9873FF;
+    color: var(--decor-color-1);
 }
 
 .btnDel:hover{
-    color: #F06A4D;
+    color: var(--red-color);
 }

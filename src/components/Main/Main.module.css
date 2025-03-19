@@ -1,0 +1,84 @@
+.wrapper{
+    max-width: 1200px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.mainSection{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+.titleWrapper{
+    margin: 0 auto;
+    margin-bottom: 25px;
+}
+
+.title{
+    margin: 0;
+}
+
+.tableWrapper{
+    overflow-x: auto;
+}
+
+.trNodata{
+    text-align: center;
+}
+
+.trNodata td{
+    line-height: 2;
+}
+
+.spinnerWrapper{
+    margin: 20px auto;
+    height: 100px;
+    width: 100px;
+}
+
+.table{
+    margin: 0 auto;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tbody{
+    background-color: var(--main-color-1);
+}
+
+.addBtnWrapper{
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.btnAddUser{
+    padding: 14px 26px;
+    background-color: unset;
+    border: 1px solid var(--decor-color-1);
+    color: var(--decor-color-1);
+    cursor: pointer;
+    transition: color .3s ease-in-out, background-color .3s ease-in-out;
+
+    &:hover{
+        color: var(--main-color-1);
+        background-color: #B89EFF;
+    }
+}
+
+.btnAddUser img{
+    padding-right: 10px;
+}
+
+@media (max-width: 576px){
+    .title{
+        font-size: 18px;
+    }
+    .titleWrapper{
+        margin-bottom: 10px;
+    }
+    .mainSection{
+        padding: 10px;
+    }
+}

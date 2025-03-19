@@ -1,5 +1,6 @@
-import './Header.css'
+import './Header.module.css'
 import {ChangeEvent} from "react";
+import HeaderStyles from './Header.module.css';
 
 function Header(props: {setTriggerSearch: (t: string) => void}){
 
@@ -10,8 +11,10 @@ function Header(props: {setTriggerSearch: (t: string) => void}){
     }
 
     return(
-        <header className="header">
-            <input type="text" className="search-field" placeholder="Введите запрос" onChange={startSearching}/>
+        <header className={HeaderStyles.header}>
+            <div className={HeaderStyles.inputWrapper}>
+                <input type="text" className={HeaderStyles.searchField} placeholder="Введите запрос" onChange={startSearching}/>
+            </div>
         </header>
     );
 }
