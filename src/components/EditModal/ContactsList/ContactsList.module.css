@@ -15,7 +15,8 @@
 }
 
 .item{
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
 }
 
 .select{
@@ -28,7 +29,6 @@
 }
 
 .input{
-    flex: 1;
     padding: 8px 12px;
     border: 0;
     border-top: 1px solid var(--border-color-1);
@@ -38,7 +38,15 @@
     }
 }
 
+.delBtnWrapper{
+    display: flex;
+    justify-content: flex-end;
+}
+
 .delBtn{
+    display: flex;
+    justify-content: center;
+    height: 100%;
     background-color: var(--border-color-1-transparent);
     border: 1px solid var(--border-color-1);
     cursor: pointer;
@@ -89,5 +97,33 @@
     .wrapper{
         padding: 0 20px;
         margin: 0 -20px 25px -20px;
+    }
+}
+
+@media (max-width: 450px){
+    .item{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+    }
+    .select{
+        grid-column: 1;
+        grid-row: 1 / 2;
+        padding: 5px;
+        border-bottom: none;
+    }
+    .delBtn{
+        grid-column: 2;
+        grid-row: 1 / 2;
+        width: 50px;
+        border-bottom: none;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+    }
+    .input{
+        grid-column: 1/-1;
+        grid-row: 2;
+        border: 1px solid var(--border-color-1);
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
     }
 }

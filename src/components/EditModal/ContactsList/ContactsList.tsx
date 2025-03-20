@@ -28,7 +28,7 @@ function ContactsList(props: PropsType){
             case "phone":
                 return /\+\d{1,3}\d{10}/.test(value) ? true : "Допустимый формат: +79993331122"
             case "mail":
-                return /[A-z0-9\-]+@[A-z]+\.[A-z]+/.test(value) ? true : "Допустимый формат: ivanovii@mail.ru"
+                return /[A-z0-9-]+@[A-z]+\.[A-z]+/.test(value) ? true : "Допустимый формат: ivanovii@mail.ru"
             case "vk":
                 return /.*www.vk.com\/.+/.test(value) ? true : "Допустимый формат: www.vk.com/ivan_ii"
             case "fb":
@@ -59,11 +59,13 @@ function ContactsList(props: PropsType){
                                    className={ContactsListStyles.input}
                                    {...props.register(`contacts.${index}.value`, {required: true, validate: (value)=>validateContact(value, index)})}
                             />
-                            <button type="button" className={`btn-reset ${ContactsListStyles.delBtn}`} onClick={()=>remove(index)}>
-                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6 0C2.682 0 0 2.682 0 6C0 9.318 2.682 12 6 12C9.318 12 12 9.318 12 6C12 2.682 9.318 0 6 0ZM6 10.8C3.354 10.8 1.2 8.646 1.2 6C1.2 3.354 3.354 1.2 6 1.2C8.646 1.2 10.8 3.354 10.8 6C10.8 8.646 8.646 10.8 6 10.8ZM8.154 3L6 5.154L3.846 3L3 3.846L5.154 6L3 8.154L3.846 9L6 6.846L8.154 9L9 8.154L6.846 6L9 3.846L8.154 3Z" fill="#B0B0B0"/>
-                                </svg>
-                            </button>
+                            <div className={ContactsListStyles.delBtnWrapper}>
+                                <button type="button" className={`btn-reset ${ContactsListStyles.delBtn}`} onClick={()=>remove(index)}>
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6 0C2.682 0 0 2.682 0 6C0 9.318 2.682 12 6 12C9.318 12 12 9.318 12 6C12 2.682 9.318 0 6 0ZM6 10.8C3.354 10.8 1.2 8.646 1.2 6C1.2 3.354 3.354 1.2 6 1.2C8.646 1.2 10.8 3.354 10.8 6C10.8 8.646 8.646 10.8 6 10.8ZM8.154 3L6 5.154L3.846 3L3 3.846L5.154 6L3 8.154L3.846 9L6 6.846L8.154 9L9 8.154L6.846 6L9 3.846L8.154 3Z" fill="#B0B0B0"/>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                         {props.errors.contacts?.[index]?.value?.type === "required" && <span className={ContactsListStyles.invalidError}>Значение не должно быть пустым</span>}
                         {props.errors.contacts?.[index]?.value?.message && <span className={ContactsListStyles.invalidError}>{props.errors.contacts?.[index]?.value?.message}</span>}
